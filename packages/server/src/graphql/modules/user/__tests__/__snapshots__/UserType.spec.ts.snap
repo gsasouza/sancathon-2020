@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Server: UserType Should query a list of users 1`] = `
+Object {
+  "users": Object {
+    "edges": Array [
+      Object {
+        "node": Object {
+          "name": "User#3",
+        },
+      },
+      Object {
+        "node": Object {
+          "name": "User#2",
+        },
+      },
+      Object {
+        "node": Object {
+          "name": "User#1",
+        },
+      },
+      Object {
+        "node": Object {
+          "name": "User#1",
+        },
+      },
+    ],
+  },
+}
+`;
+
+exports[`Server: UserType Should search a list of users 1`] = `
+Object {
+  "users": Object {
+    "edges": Array [
+      Object {
+        "node": Object {
+          "name": "search 2",
+        },
+      },
+      Object {
+        "node": Object {
+          "name": "search 1",
+        },
+      },
+    ],
+  },
+}
+`;
