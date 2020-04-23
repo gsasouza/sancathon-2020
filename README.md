@@ -9,3 +9,4 @@
 - Generate GraphQL client queries: `yarn console:relay` 
 - Run server `yarn server:graphql`
 - Run client `yarn console:start`
+- Start hacking :)
