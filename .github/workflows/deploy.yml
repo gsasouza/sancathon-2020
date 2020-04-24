@@ -39,7 +39,9 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY }}
           envs: MONGO_URL,GRAPHQL_PORT,JWT_SECRET
+          script_stop: true
           script: |
+            export MONGO_URL=${{ secrets.MONGO_URL }} GRAPHQL_PORT=${{ secrets.GRAPHQL_PORT }} JWT_SECRET=${{ secrets.JWT_SECRET }}
             cd /var/www
             cp packages/server/.env.example packages/server/.env
             yarn
