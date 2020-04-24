@@ -38,6 +38,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY }}
+          envs: MONGO_URL,GRAPHQL_PORT,JWT_SECRET
           script: |
             cd /var/www
             cp packages/server/.env.example packages/server/.env
