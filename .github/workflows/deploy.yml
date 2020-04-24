@@ -41,9 +41,9 @@ jobs:
           envs: MONGO_URL,GRAPHQL_PORT,JWT_SECRET
           script_stop: true
           script: |
-            export MONGO_URL=${{ secrets.MONGO_URL }} GRAPHQL_PORT=${{ secrets.GRAPHQL_PORT }} JWT_SECRET=${{ secrets.JWT_SECRET }}
             cd /var/www
-            cp packages/server/.env.example packages/server/.env
+            touch packages/server/.env
+            ${{ secrets.SERVER_ENV }} > packages/server/.env
             yarn
             yarn server:generate-schema
             yarn server:build
