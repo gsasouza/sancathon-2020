@@ -44,9 +44,10 @@ jobs:
           script: |
             cd /var/www
             yarn
-            yarn server:generate-schema
-            yarn server:build
-            pm2 start packages/server/dist --name "graphql"
+            cd packages/server
+            yarn generate-schema
+            yarn build
+            pm2 start dist --name "graphql"
 
   deploy-app:
     needs: [copy-files, deploy-server]
