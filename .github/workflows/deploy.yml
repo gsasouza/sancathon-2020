@@ -8,17 +8,17 @@ on:
 jobs:
   deploy-server:
     runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v1
+    steps:
+      - uses: actions/checkout@v1
 
-        - name: Execute remote command
-          uses: appleboy/ssh-action@master
-          with:
-            host: ${{ secrets.HOST }}
-            username: ${{ secrets.USERNAME }}
-            password: ${{ secrets.PASSWORD }}
-            port: ${{ secrets.PORT }}
-            script: whoami
+      - name: Execute remote command
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: whoami
 
   deploy-app:
     runs-on: ubuntu-latest
