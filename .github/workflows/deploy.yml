@@ -46,8 +46,10 @@ jobs:
             ${{ secrets.SERVER_ENV }} > packages/server/.env
             yarn
             yarn server:generate-schema
-            yarn server:build
-            pm2 start packages/server/dist --name "graphql"
+            cd packages/server
+            cp .env.example .env
+            yarn build
+            pm2 start dist --name "graphql"
 
   deploy-app:
     needs: [copy-files, deploy-server]
