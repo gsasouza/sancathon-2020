@@ -16,8 +16,8 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY }}
-          source: "."
-          target: "/var/www"
+          source: .
+          target: /var/www
 
 #  deploy-server:
 #    needs: [copy-files]
