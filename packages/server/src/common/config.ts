@@ -11,7 +11,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 dotenvSafe.config({
   allowEmptyValues: !isProduction,
   path: root('.env'),
-  sample: root('.env.ci.example'),
+  sample: root('.env.example'),
 });
 
 export const GRAPHQL_PORT = envVar
