@@ -1,4 +1,4 @@
-name: deploy-app
+name: deploy
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY }}
-          script: whoiam
+          script: echo "Server"
 
   deploy-app:
     needs: [deploy-server]
@@ -31,6 +31,6 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          script: whoami
-
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSH_KEY }}
+          script: echo "App"
