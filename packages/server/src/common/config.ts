@@ -28,18 +28,3 @@ export const JWT_SECRET = envVar
   .default('SECRET')
   .required(isProduction)
   .asString();
-
-export const PUBNUB_CREDENTIALS = {
-  subscribeKey: envVar
-    .get('SUBSCRIBE_KEY')
-    .required(isProduction)
-    .asString(),
-  publishKey: envVar
-    .get('SUBSCRIBE_KEY')
-    .required(isProduction)
-    .asString(),
-  secretKey: envVar
-    .get('SECRET_KEY')
-    .required(isProduction)
-    .asString(),
-};

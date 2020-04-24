@@ -34,9 +34,9 @@ const connectDatabase = (url: string) => {
 
     return mongoose.connect(url, {
       useNewUrlParser: true,
-      useCreateIndex: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
+      useCreateIndex: true,
     });
   });
 };

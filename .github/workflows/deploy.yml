@@ -19,7 +19,7 @@ jobs:
         with:
           source: "."
           target: "/var/www"
-  
+
   deploy-server:
     needs: [deploy-app]
     runs-on: ubuntu-latest
@@ -28,6 +28,10 @@ jobs:
 
       - name: Execute remote command
         uses: appleboy/ssh-action@master
+        env:
+          MONGO_URL: ${{ secrets.MONGO_URL }}
+          GRAPHQL_PORT: ${{ secrets.GRAPHQL_PORT }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
