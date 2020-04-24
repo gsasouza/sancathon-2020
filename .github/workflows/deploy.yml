@@ -42,7 +42,7 @@ jobs:
           script_stop: true
           script: |
             cd /var/www
-            touch packages/server/.env
+            cp packages/server/.env.example packages/server/.env
             ${{ secrets.SERVER_ENV }} > packages/server/.env
             yarn
             yarn server:generate-schema
