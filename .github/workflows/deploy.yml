@@ -37,6 +37,7 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            cd /var/www
             yarn
             yarn server:generate-schema
             yarn server:build
