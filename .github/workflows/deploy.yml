@@ -16,8 +16,9 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          script: whoami
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSHKEY }}
+          script: whoiam
 
   deploy-app:
     needs: [deploy-server]
