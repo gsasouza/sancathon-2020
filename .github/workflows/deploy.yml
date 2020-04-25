@@ -18,7 +18,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           source: .
-          target: /var/www
+          target: ~/sancathon
 
   deploy-server:
     needs: [copy-files]
@@ -41,7 +41,7 @@ jobs:
           envs: MONGO_URL,GRAPHQL_PORT,JWT_SECRET,CI
           script_stop: true
           script: |
-            cd /var/www
+            cd ~/sancathon
             cp packages/server/.env.ci.example .env
             yarn
             yarn server:generate-schema
