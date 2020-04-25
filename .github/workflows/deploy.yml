@@ -36,7 +36,6 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY }}
           envs: MONGO_URL,GRAPHQL_PORT,JWT_SECRET,CI
           script_stop: true
@@ -59,6 +58,5 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY }}
           script: echo "App"
