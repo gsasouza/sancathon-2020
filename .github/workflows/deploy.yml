@@ -39,14 +39,14 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY }}
-          envs: MONGO_URL,GRAPHQL_PORT,JWT_SECRET, CO
+          envs: MONGO_URL,GRAPHQL_PORT,JWT_SECRET,CI
           script_stop: true
           script: |
             cd /var/www
+            cp packages/server/.env.ci.example .env
             yarn
-            cd packages/server
-            yarn generate-schema
-            yarn build
+            yarn server:generate-schema
+            yarn server:build
             pm2 start dist --name "graphql"
 
   deploy-app:
