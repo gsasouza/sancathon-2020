@@ -45,7 +45,7 @@ jobs:
             yarn
             yarn server:generate-schema
             yarn server:build
-            pm2 start dist --name "graphql"
+            pm2 start packages/server/dist --name "graphql"
 
   deploy-app:
     needs: [copy-files, deploy-server]
