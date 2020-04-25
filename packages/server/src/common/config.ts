@@ -15,6 +15,8 @@ dotenvSafe.config({
   sample: root(isCI ? '.env.ci.example' : '.env.example'),
 });
 
+console.log(process.env)
+
 export const GRAPHQL_PORT = envVar
   .get('GRAPHQL_PORT')
   .default(5001)

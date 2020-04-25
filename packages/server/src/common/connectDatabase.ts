@@ -9,6 +9,7 @@ declare module 'mongoose' {
 }
 
 const connectDatabase = (url: string) => {
+  console.log(url)
   return new Promise((resolve, reject) => {
     // mongoose.Promise = global.Promise;
     mongoose.connection
