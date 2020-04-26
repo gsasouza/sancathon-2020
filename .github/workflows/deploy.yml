@@ -41,7 +41,7 @@ jobs:
           envs: MONGO_URL,GRAPHQL_PORT,JWT_SECRET,CI
           script_stop: true
           script: |
-            cd /var/www
+            cd ~/sancathon
             yarn
             yarn server:generate-schema
             yarn server:build
