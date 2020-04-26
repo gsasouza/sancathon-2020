@@ -35,11 +35,10 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script_stop: true
           script: |
-            source ~/.bashrc
             cd ~/sancathon
-            yarn
-            yarn server:generate-schema
-            yarn server:build
+            ~/.yarn/bin/yarn.js
+            ~/.yarn/bin/yarn.js server:generate-schema
+            ~/.yarn/bin/yarn.js server:build
             pm2 restart graphql
 
   deploy-app:
