@@ -49,10 +49,14 @@ jobs:
 
       - name: Execute remote command
         uses: appleboy/ssh-action@master
+        env:
+          GRAPHQL_URL: ${{ secrets.GRAPHQL_URL }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
+          envs: GRAPHQL_URL,ACCESS_TOKEN
           script: |
             cd ~/sancathon
             yarn console:relay
