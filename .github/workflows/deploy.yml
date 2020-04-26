@@ -39,7 +39,7 @@ jobs:
             yarn
             yarn server:generate-schema
             yarn server:build
-            pm2 restart ~/server_ecosystem.config.js
+            pm2 restart graphql
 
   deploy-app:
     needs: [copy-files, deploy-server]
