@@ -90,3 +90,18 @@ module.exports = {
     }),
   ],
 };
+
+module.exports = {
+  apps : [
+    {
+      name: "graphql",
+      script: "./sancathon/packages/console/build",
+      watch: true,
+      env: {
+        MONGO_URL: 'mongodb+srv://sancathon:sancathonuser@cluster0-aai51.gcp.mongodb.net/test?retryWrites=true&w=majority',
+        GRAPHQL_PORT: 3000,
+        JWT_SECRET: 'S3CR3T',
+      }
+    }
+  ]
+}
