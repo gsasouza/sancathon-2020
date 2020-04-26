@@ -36,9 +36,9 @@ jobs:
           script_stop: true
           script: |
             cd ~/sancathon
-            ~/.yarn/bin/yarn.js
-            ~/.yarn/bin/yarn.js server:generate-schema
-            ~/.yarn/bin/yarn.js server:build
+            yarn
+            yarn server:generate-schema
+            yarn server:build
             pm2 restart graphql
 
   deploy-app:
