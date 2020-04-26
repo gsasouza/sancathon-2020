@@ -30,6 +30,7 @@ jobs:
       - name: Execute remote command
         uses: appleboy/ssh-action@master
         env:
+          NEW_ENV: "value"
           MONGO_URL: ${{ secrets.MONGO_URL }}
           GRAPHQL_PORT: ${{ secrets.GRAPHQL_PORT }}
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
@@ -38,7 +39,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          envs: MONGO_URL,GRAPHQL_PORT,JWT_SECRET,CI
+          envs: NEW_ENV,MONGO_URL,GRAPHQL_PORT,JWT_SECRET,CI
           script_stop: true
           script: |
             cd ~/sancathon
@@ -46,7 +47,7 @@ jobs:
             yarn server:generate-schema
             yarn server:build
             cd packages/server/
-            cp .env.ci.exaple dist/.env.example
+            cp .env.ci.example dist/.env.example
             cp .env.ci.example dist/.env
             pm2 delete graphql
             pm2 start dist --name "graphql"
