@@ -42,6 +42,7 @@ jobs:
           envs: NEW_ENV,MONGO_URL,GRAPHQL_PORT,JWT_SECRET,CI
           script_stop: true
           script: |
+            export MONGO_URL=${{ secrets.MONGO_URL }} GRAPHQL_PORT=${{ secrets.GRAPHQL_PORT }} JWT_SECRET=${{ secrets.JWT_SECRET }} CI=true
             cd ~/sancathon
             yarn
             yarn server:generate-schema
