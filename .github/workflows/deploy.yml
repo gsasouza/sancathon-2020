@@ -35,6 +35,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script_stop: true
           script: |
+            source ~/.bashrc
             cd ~/sancathon
             yarn
             yarn server:generate-schema
