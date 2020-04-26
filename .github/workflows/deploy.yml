@@ -39,9 +39,6 @@ jobs:
             yarn
             yarn server:generate-schema
             yarn server:build
-            cd packages/server/
-            cp .env.ci.example dist/.env.ci.example
-            cp .env.ci.example dist/.env
             pm2 restart ~/server_ecosystem.config.js
 
   deploy-app:
@@ -56,4 +53,8 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          script: echo "App"
+          script: |
+            cd ~/sancathon
+            yarn console:relay
+            yarn console:build
+            sudo service nginx restart
