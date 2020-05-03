@@ -6,6 +6,7 @@ import { ConnectionArguments } from 'graphql-relay';
 import { EquipmentModel, IEquipment } from './EquipmentModel';
 import { GraphQLContext, Types } from '../../../common/types';
 import { DataLoaderKey } from '../../loaders';
+import {IUser} from '../user/UserModel'
 
 export type { IEquipment } from './EquipmentModel';
 
@@ -15,6 +16,7 @@ export default class Equipment {
   name: string;
   lastMaintenance: Date;
   removedAt: Date | null;
+  user: IUser;
 
   constructor(data: IEquipment) {
     this.id = data._id;
@@ -22,6 +24,7 @@ export default class Equipment {
     this.name = data.name;
     this.lastMaintenance = data.lastMaintenance;
     this.removedAt = data.removedAt;
+    this.user = data.user;
   }
 }
 
@@ -50,8 +53,10 @@ interface LoadEquipmentsArgs extends ConnectionArguments {
 
 export const loadEquipments = async (context: any, args: LoadEquipmentsArgs) => {
   const defaultWhere = {
-    removedAt: null
+    removedAt: null,
+    user: context.user._id
   }
+
   const where = args.search ? { ...defaultWhere, name: { $regex: new RegExp(`^${escapeStringRegexp(args.search)}`, 'ig') } } : defaultWhere;
   const users = EquipmentModel.find(where, { _id: 1 }).sort({ createdAt: -1 }).lean();
   return connectionFromMongoCursor({

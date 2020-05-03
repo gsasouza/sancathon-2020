@@ -3,8 +3,8 @@ import { nodeDefinitions, fromGlobalId } from 'graphql-relay';
 import { GraphQLContext } from '../../common/types';
 import User, * as UserLoader from '../modules/user/UserLoader';
 import UserType from '../modules/user/UserType';
-import Equipment, * as EquipmentLoader from '../modules/user/UserLoader';
-import EquipmentType from '../modules/user/UserType';
+import Equipment, * as EquipmentLoader from '../modules/equipment/EquipmentLoader';
+import EquipmentType from '../modules/equipment/EquipmentType';
 
 const { nodeField, nodesField, nodeInterface } = nodeDefinitions(
   async (globalId, context: GraphQLContext) => {

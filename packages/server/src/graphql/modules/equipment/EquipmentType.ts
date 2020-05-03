@@ -2,6 +2,7 @@ import { NodeInterface } from '../../interface/NodeInterface';
 
 import { GraphQLObjectType, GraphQLString } from 'graphql';
 import { globalIdField } from 'graphql-relay';
+import UserType from '../user/UserType'
 
 const EquipmentType: GraphQLObjectType = new GraphQLObjectType({
   name: 'Equipment',
@@ -10,15 +11,15 @@ const EquipmentType: GraphQLObjectType = new GraphQLObjectType({
     id: globalIdField('Equipment'),
     name: {
       type: GraphQLString,
-      resolve: user => user.name,
     },
     lastMaintenance: {
       type: GraphQLString,
-      resolve: user => user.lastMaintenance,
+    },
+    user: {
+      type: UserType,
     },
     removedAt: {
       type: GraphQLString,
-      resolve: user => user.removedAt
     }
   }),
   interfaces: () => [NodeInterface],
