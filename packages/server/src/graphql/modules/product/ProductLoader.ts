@@ -6,7 +6,6 @@ import { ConnectionArguments } from 'graphql-relay';
 import { ProductModel, IProduct } from './ProductModel';
 import { GraphQLContext, Types } from '../../../common/types';
 import { DataLoaderKey } from '../../loaders';
-import {IUser} from '../user/UserModel'
 
 export type { IProduct } from './ProductModel';
 
@@ -18,7 +17,6 @@ export default class Product {
   price: number;
   signed: boolean;
   removedAt: Date | null;
-  user: IUser;
 
   constructor(data: IProduct) {
     this.id = data._id;
@@ -28,7 +26,6 @@ export default class Product {
     this.price = data.price;
     this.signed = data.signed;
     this.removedAt = data.removedAt;
-    this.user = data.user;
   }
 }
 

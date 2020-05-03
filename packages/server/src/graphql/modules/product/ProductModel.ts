@@ -1,5 +1,4 @@
 import mongoose, { Document, Model, Schema } from 'mongoose';
-import { IUser } from '../user/UserModel';
 
 export interface IProduct extends Document {
   name: string;
@@ -7,7 +6,6 @@ export interface IProduct extends Document {
   price: number;
   signed: boolean;
   removedAt: Date | null;
-  user: IUser;
 }
 
 const productSchema = new Schema(
@@ -33,11 +31,6 @@ const productSchema = new Schema(
     removedAt: {
       type: Date,
       default: null,
-      required: true
-    },
-    user: {
-      type: Schema.Types.ObjectId,
-      ref: 'user',
       required: true
     },
   },

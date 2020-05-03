@@ -14,6 +14,7 @@ export default class User {
   _id: string;
   name: string;
   username: string;
+  products: Types.ObjectId[]
   email: string;
   removedAt: string | null;
 
@@ -21,6 +22,7 @@ export default class User {
     this.id = data._id;
     this._id = data._id;
     this.name = data.name;
+    this.products = data.products;
     this.email = data.email;
     this.username = data.username;
     this.removedAt = data.removedAt;

@@ -1,4 +1,4 @@
-import mongoose, { Document, Model } from 'mongoose';
+import mongoose, {Document, Model, Types } from 'mongoose';
 
 import { hashPassword, authenticate, encryptPassword } from '../utils';
 
@@ -7,6 +7,7 @@ export interface IUser extends Document {
   username: string;
   password: string;
   email: string;
+  products: Types.ObjectId[];
   removedAt: string | null;
   authenticate: (plainTextPassword: string) => boolean;
   encryptPassword: (password: string | undefined) => Promise<string>;
@@ -33,6 +34,12 @@ const adminUserSchema = new mongoose.Schema(
       type: String,
       hidden: true,
       required: true,
+    },
+    products: {
+      type: [Types.ObjectId],
+      default: [],
+      ref: 'product',
+      required: true
     },
     removedAt: {
       type: String,

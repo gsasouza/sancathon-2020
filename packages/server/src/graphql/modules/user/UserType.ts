@@ -1,7 +1,9 @@
 import { NodeInterface } from '../../interface/NodeInterface';
 
-import { GraphQLObjectType, GraphQLString } from 'graphql';
+import { GraphQLList, GraphQLObjectType, GraphQLString } from 'graphql';
 import { globalIdField } from 'graphql-relay';
+import ProductType from '../product/ProductType';
+import { ProductLoader } from '../../loaders';
 
 const UserType: GraphQLObjectType = new GraphQLObjectType({
   name: 'User',
@@ -20,14 +22,18 @@ const UserType: GraphQLObjectType = new GraphQLObjectType({
       type: GraphQLString,
       resolve: user => user.username,
     },
+    products: {
+      type: GraphQLList(ProductType),
+      resolve: (user, args, context) => ProductLoader.load(context, user.products),
+    },
     email: {
       type: GraphQLString,
       resolve: user => user.email,
     },
     removedAt: {
       type: GraphQLString,
-      resolve: user => user.removedAt
-    }
+      resolve: user => user.removedAt,
+    },
   }),
   interfaces: () => [NodeInterface],
 });
