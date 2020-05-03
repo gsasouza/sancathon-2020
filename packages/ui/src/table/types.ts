@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 export type TableHeader = {
   label: string;
 };
@@ -5,7 +7,7 @@ export type TableHeader = {
 export type TableColumn<T> = {
   header: TableHeader;
   property: string;
-  renderRow?: (node: T) => void;
+  renderRow?: (node: T) => React.ReactElement;
 };
 
 type Edge<T> = {

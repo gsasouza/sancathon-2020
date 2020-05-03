@@ -42,6 +42,7 @@ const LoginInnerForm = () => {
     {
       initialValues,
       validationSchema: LoginSchema,
+      validateOnMount: true,
       onSubmit: () => mutate({ variables: { input: { username: values.username, password: values.password } } }),
     },
   );
@@ -56,13 +57,13 @@ const LoginInnerForm = () => {
 
   const onError = () => {
     toast.error('Usuário ou senha inválidos!');
-  }
+  };
 
   const [mutate] = useMutation(
     UserLoginMutation,
     {
       onCompleted,
-      onError
+      onError,
     },
     relayEnvironment,
   );

@@ -54,7 +54,7 @@ const LoginScreen = () => {
     <ImageBackground>
       <Wrapper>
         <Container>
-          <Title>Sancathon</Title>
+          <Title>NeoCloud</Title>
           <LoginForm />
         </Container>
       </Wrapper>

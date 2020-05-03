@@ -6,6 +6,7 @@ export const login = (accessToken, remember) =>
 export const logout = () => {
   localStorage.removeItem(ACCESS_TOKEN);
   sessionStorage.removeItem(ACCESS_TOKEN);
+  window.location.href = '/'
 };
 
 export const getAccessToken = () => localStorage.getItem(ACCESS_TOKEN) || sessionStorage.getItem(ACCESS_TOKEN);

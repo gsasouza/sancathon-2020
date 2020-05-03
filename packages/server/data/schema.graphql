@@ -11,12 +11,78 @@ type ContactCreatePayload {
   clientMutationId: String
 }
 
+"""Equipment data"""
+type Equipment implements Node {
+  """The ID of an object"""
+  id: ID!
+  name: String
+  lastMaintenance: String
+  user: User
+  removedAt: String
+}
+
+"""A connection to a list of items."""
+type EquipmentConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [EquipmentEdge]
+  count: Int
+}
+
+input EquipmentCreateInput {
+  name: String!
+  clientMutationId: String
+}
+
+type EquipmentCreatePayload {
+  equipmentEdge: EquipmentEdge
+  error: String
+  clientMutationId: String
+}
+
+"""An edge in a connection."""
+type EquipmentEdge {
+  """The item at the end of the edge"""
+  node: Equipment
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+input EquipmentEditInput {
+  id: ID!
+  lastMaintenance: String!
+  clientMutationId: String
+}
+
+type EquipmentEditPayload {
+  equipmentEdge: EquipmentEdge
+  error: String
+  clientMutationId: String
+}
+
+input EquipmentRemoveInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type EquipmentRemovePayload {
+  equipmentEdge: EquipmentEdge
+  error: String
+  clientMutationId: String
+}
+
 type Mutation {
   UserLogin(input: UserLoginInput!): UserLoginPayload
   UserCreate(input: UserCreateInput!): UserCreatePayload
   UserEdit(input: UserEditInput!): UserEditPayload
   UserRemove(input: UserRemoveInput!): UserRemovePayload
   ContactCreate(input: ContactCreateInput!): ContactCreatePayload
+  EquipmentCreate(input: EquipmentCreateInput!): EquipmentCreatePayload
+  EquipmentEdit(input: EquipmentEditInput!): EquipmentEditPayload
+  EquipmentRemove(input: EquipmentRemoveInput!): EquipmentRemovePayload
 }
 
 """An object with an ID"""
@@ -49,6 +115,7 @@ type Query {
   ): Node
   me: User
   users(after: String, first: Int, before: String, last: Int, search: String): UserConnection
+  equipments(after: String, first: Int, before: String, last: Int, search: String): EquipmentConnection
 }
 
 """User data"""
