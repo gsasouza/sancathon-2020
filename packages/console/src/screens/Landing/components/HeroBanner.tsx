@@ -1,7 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import BaseSection from './Section'
+import BaseSection from './Section';
+// @ts-ignore
+import heroImage from '../../../../static/img/hero-image.jpg';
 
 const Container = styled(BaseSection)`
   display: flex;
@@ -9,7 +11,7 @@ const Container = styled(BaseSection)`
   justify-content: center;
   height: 80vh;
   width: 100%;
-  background-image: url('../../../../assets/images/hero-image.jpg');
+  background-image: url(${heroImage});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
