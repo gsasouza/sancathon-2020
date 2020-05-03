@@ -4,10 +4,10 @@ import { fromGlobalId, mutationWithClientMutationId, toGlobalId } from 'graphql-
 import { UserModel } from '../../user/UserModel';
 import { ProductModel } from '../ProductModel';
 import UserConnection from '../../user/UserConnection';
-import * as UserLoader from '../../user/UserLoader';
+import { UserLoader } from '../../../loaders';
 
 export default mutationWithClientMutationId({
-  name: 'ProductSign',
+  name: 'ProductUnSign',
   inputFields: {
     id: {
       type: GraphQLNonNull(GraphQLID),
@@ -33,7 +33,7 @@ export default mutationWithClientMutationId({
     }
 
     try {
-      const updatedUser = await UserModel.findOneAndUpdate({ _id: user._id }, { $addToSet: { products: product._id } });
+      const updatedUser = await UserModel.findOneAndUpdate({ _id: user._id }, { $pull: { products: product._id } });
       return {
         error: null,
         user: updatedUser,

@@ -33,12 +33,14 @@ export const getLoader = () =>
 const viewerCanSee = context => !!context.user;
 
 export const load = async (context: GraphQLContext, id: DataLoaderKey): Promise<Product | null> => {
+
   if (!id) return null;
   try {
     const data = await context.dataloaders.ProductLoader.load(id);
     if (!data) return null;
     return viewerCanSee(context) ? new Product(data) : null;
   } catch (err) {
+    console.log(err);
     return null;
   }
 };
