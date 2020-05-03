@@ -1,6 +1,6 @@
 import { NodeInterface } from '../../interface/NodeInterface';
 
-import { GraphQLBoolean, GraphQLInt, GraphQLObjectType, GraphQLString } from 'graphql';
+import { GraphQLFloat, GraphQLObjectType, GraphQLString } from 'graphql';
 import { globalIdField } from 'graphql-relay';
 
 const ProductType: GraphQLObjectType = new GraphQLObjectType({
@@ -15,10 +15,8 @@ const ProductType: GraphQLObjectType = new GraphQLObjectType({
       type: GraphQLString,
     },
     price: {
-      type: GraphQLInt,
-    },
-    signed: {
-      type: GraphQLBoolean,
+      type: GraphQLFloat,
+      resolve: obj => obj.price / 100,
     },
     removedAt: {
       type: GraphQLString,

@@ -13,18 +13,16 @@ export default class Product {
   id: string;
   _id: string;
   name: string;
-  description: string;
   price: number;
-  signed: boolean;
+  description: string;
   removedAt: Date | null;
 
   constructor(data: IProduct) {
     this.id = data._id;
     this._id = data._id;
     this.name = data.name;
-    this.description = data.description;
     this.price = data.price;
-    this.signed = data.signed;
+    this.description = data.description;
     this.removedAt = data.removedAt;
   }
 }
@@ -55,7 +53,6 @@ interface LoadProductsArgs extends ConnectionArguments {
 export const loadProducts = async (context: any, args: LoadProductsArgs) => {
   const defaultWhere = {
     removedAt: null,
-    user: context.user._id
   }
 
   const where = args.search ? { ...defaultWhere, name: { $regex: new RegExp(`^${escapeStringRegexp(args.search)}`, 'ig') } } : defaultWhere;

@@ -1,4 +1,4 @@
-import mongoose, {Document, Model, Types } from 'mongoose';
+import mongoose, { Document, Model, Types } from 'mongoose';
 
 import { hashPassword, authenticate, encryptPassword } from '../utils';
 
@@ -39,11 +39,11 @@ const adminUserSchema = new mongoose.Schema(
       type: [Types.ObjectId],
       default: [],
       ref: 'product',
-      required: true
+      required: true,
     },
     removedAt: {
       type: String,
-      default: null
+      default: null,
     },
   },
   { timestamps: true },

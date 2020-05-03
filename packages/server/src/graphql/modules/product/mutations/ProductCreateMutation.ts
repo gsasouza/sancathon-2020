@@ -1,4 +1,4 @@
-import { GraphQLString, GraphQLNonNull } from 'graphql';
+import {GraphQLString, GraphQLNonNull, GraphQLInt, GraphQLBoolean, GraphQLFloat} from 'graphql';
 import { mutationWithClientMutationId, toGlobalId } from 'graphql-relay';
 
 import { ProductModel } from '../ProductModel';
@@ -9,10 +9,16 @@ export default mutationWithClientMutationId({
   name: 'ProductCreate',
   inputFields: {
     name: {
-      type: new GraphQLNonNull(GraphQLString),
+      type: GraphQLNonNull(GraphQLString),
+    },
+    description: {
+      type: GraphQLNonNull(GraphQLString),
+    },
+    price: {
+      type: GraphQLNonNull(GraphQLFloat),
     },
   },
-  mutateAndGetPayload: async ({ name }, { user }) => {
+  mutateAndGetPayload: async ({ name, description, price }, { user }) => {
     if (!user) {
       return {
         product: null,
@@ -20,7 +26,7 @@ export default mutationWithClientMutationId({
       };
     }
 
-    const product = await ProductModel.findOne({ name, user: user._id });
+    const product = await ProductModel.findOne({ name });
 
     if (product) {
       return {
@@ -30,7 +36,7 @@ export default mutationWithClientMutationId({
     }
 
     try {
-      const newProduct = await ProductModel.create({ name, user: user._id, lastMaintenance: new Date() });
+      const newProduct = await ProductModel.create({ name, description, price: price * 100 });
       return {
         error: null,
         product: newProduct,

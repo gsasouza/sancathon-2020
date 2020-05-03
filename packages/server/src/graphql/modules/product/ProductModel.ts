@@ -4,7 +4,6 @@ export interface IProduct extends Document {
   name: string;
   description: string;
   price: number;
-  signed: boolean;
   removedAt: Date | null;
 }
 
@@ -23,15 +22,9 @@ const productSchema = new Schema(
       type: Number,
       required: true
     },
-    signed: {
-      type: Boolean,
-      default: false,
-      required: true
-    },
     removedAt: {
       type: Date,
       default: null,
-      required: true
     },
   },
   { timestamps: true },
