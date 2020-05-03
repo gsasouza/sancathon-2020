@@ -2,9 +2,10 @@ import { connectionFromMongoCursor, mongooseLoader } from '@entria/graphql-mongo
 import DataLoader from 'dataloader';
 import escapeStringRegexp from 'escape-string-regexp';
 import { ConnectionArguments } from 'graphql-relay';
+import { Schema } from 'mongoose';
 
 import { UserModel, IUser } from './UserModel';
-import { GraphQLContext, Types } from '../../../common/types';
+import { GraphQLContext } from '../../../common/types';
 import { DataLoaderKey } from '../../loaders';
 
 export type { IUser } from './UserModel';
@@ -14,7 +15,7 @@ export default class User {
   _id: string;
   name: string;
   username: string;
-  products: Types.ObjectId[]
+  products: Schema.Types.ObjectId[]
   email: string;
   removedAt: string | null;
 
@@ -45,7 +46,7 @@ export const load = async (context: GraphQLContext, id: DataLoaderKey): Promise<
   }
 };
 
-export const clearCache = ({ dataloaders }: GraphQLContext, id: Types.ObjectId) =>
+export const clearCache = ({ dataloaders }: GraphQLContext, id: Schema.Types.ObjectId) =>
   dataloaders.UserLoader.clear(id.toString());
 
 interface LoadUsersArgs extends ConnectionArguments {

@@ -86,6 +86,8 @@ type Mutation {
   ProductCreate(input: ProductCreateInput!): ProductCreatePayload
   ProductEdit(input: ProductEditInput!): ProductEditPayload
   ProductRemove(input: ProductRemoveInput!): ProductRemovePayload
+  ProductSign(input: ProductSignInput!): ProductSignPayload
+  ProductUnSign(input: ProductUnSignInput!): ProductUnSignPayload
 }
 
 """An object with an ID"""
@@ -116,6 +118,7 @@ type Product implements Node {
   name: String
   description: String
   price: Float
+  meHasSigned: Boolean
   removedAt: String
 }
 
@@ -171,6 +174,30 @@ input ProductRemoveInput {
 
 type ProductRemovePayload {
   productEdge: ProductEdge
+  error: String
+  clientMutationId: String
+}
+
+input ProductSignInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type ProductSignPayload {
+  productEdge: ProductEdge
+  userEdge: UserEdge
+  error: String
+  clientMutationId: String
+}
+
+input ProductUnSignInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type ProductUnSignPayload {
+  productEdge: ProductEdge
+  userEdge: UserEdge
   error: String
   clientMutationId: String
 }

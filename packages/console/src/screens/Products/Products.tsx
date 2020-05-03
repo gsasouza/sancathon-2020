@@ -1,25 +1,44 @@
 import * as React from 'react';
-import { Card, ContentHeader, Table } from '@sancathon/ui';
+import { Card, ContentHeader, Table, Checkbox } from '@sancathon/ui';
 import { graphql, usePaginationFragment, usePreloadedQuery } from 'react-relay/hooks';
+import { useMutation } from 'relay-hooks';
 
 import { ProductsListPaginationQuery } from './__generated__/ProductsListPaginationQuery.graphql';
 
-const tableColumns = [
-  {
-    header: { label: 'Nome' },
-    property: 'name',
-  },
-  {
-    header: { label: 'Descrição' },
-    property: 'description',
-  },
-  {
-    header: { label: 'Valor' },
-    property: 'price',
-  },
-];
+import { ProductSignMutation } from './mutations/ProductSignMutation';
+import { ProductUnSignMutation } from './mutations/ProductUnSignMutation';
 
 const Products = ({ preloadedQuery }) => {
+  const [signProduct] = useMutation(ProductSignMutation);
+  const [unSignProduct] = useMutation(ProductUnSignMutation);
+
+  const handleSignChange = id => e => {
+    if (e.target.checked) return signProduct({ variables: { input: { id } } });
+    return unSignProduct({ variables: { input: { id } } });
+  };
+
+  const tableColumns = [
+    {
+      header: { label: 'Nome' },
+      property: 'name',
+    },
+    {
+      header: { label: 'Descrição' },
+      property: 'description',
+    },
+    {
+      header: { label: 'Valor' },
+      property: 'price',
+    },
+    {
+      header: { label: 'Assinado' },
+      property: 'meHasSigned',
+      renderRow: ({ name, meHasSigned, id }) => (
+        <Checkbox value={meHasSigned} label={''} name={name} onChange={handleSignChange(id)} />
+      ),
+    },
+  ];
+
   const query = usePreloadedQuery(ProductsListQuery, preloadedQuery);
   const { data } = usePaginationFragment<ProductsListPaginationQuery, any>(fragment, query);
   return (
@@ -52,6 +71,7 @@ const fragment = graphql`
           name
           price
           description
+          meHasSigned
         }
       }
     }

@@ -5,6 +5,8 @@ import { UserModel } from '../../user/UserModel';
 import { ProductModel } from '../ProductModel';
 import UserConnection from '../../user/UserConnection';
 import * as UserLoader from '../../user/UserLoader';
+import ProductConnection from '../ProductConnection'
+import * as ProductLoader from '../ProductLoader'
 
 export default mutationWithClientMutationId({
   name: 'ProductSign',
@@ -19,6 +21,7 @@ export default mutationWithClientMutationId({
     if (!user) {
       return {
         user: null,
+        product: null,
         error: 'FORBIDDEN',
       };
     }
@@ -28,6 +31,7 @@ export default mutationWithClientMutationId({
     if (!product) {
       return {
         user: null,
+        product: null,
         error: 'NOT_FOUND',
       };
     }
@@ -37,15 +41,29 @@ export default mutationWithClientMutationId({
       return {
         error: null,
         user: updatedUser,
+        product,
       };
     } catch (e) {
       return {
         user: null,
         error: e,
+        product: null,
       };
     }
   },
   outputFields: {
+    productEdge: {
+      type: ProductConnection.edgeType,
+      resolve: async ({ product }, _, context) => {
+        if (!product) return null;
+        const newProduct = await ProductLoader.load(context, product._id);
+        if (!newProduct) return null;
+        return {
+          cursor: toGlobalId('Product', newProduct.id),
+          node: { ...newProduct, meHasSigned: true },
+        };
+      },
+    },
     userEdge: {
       type: UserConnection.edgeType,
       resolve: async ({ user }, _, context) => {
