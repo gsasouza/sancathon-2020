@@ -10,7 +10,7 @@ const sidebarProps = {
   items: [
     { label: 'Home', path: '/dashboard/home' },
     { label: 'Produtos', path: '/dashboard/products' },
-    { label: 'Equipamentos', path: '/dashboard/equipments' },
+    { label: 'Equipamentos', path: '/dashboard/equipment' },
   ],
   footer: {
     action: logout,
