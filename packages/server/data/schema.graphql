@@ -1,8 +1,22 @@
+input ContactCreateInput {
+  businessType: String!
+  email: String!
+  name: String!
+  businessRequirement: String!
+  clientMutationId: String
+}
+
+type ContactCreatePayload {
+  error: String
+  clientMutationId: String
+}
+
 type Mutation {
   UserLogin(input: UserLoginInput!): UserLoginPayload
   UserCreate(input: UserCreateInput!): UserCreatePayload
   UserEdit(input: UserEditInput!): UserEditPayload
   UserRemove(input: UserRemoveInput!): UserRemovePayload
+  ContactCreate(input: ContactCreateInput!): ContactCreatePayload
 }
 
 """An object with an ID"""

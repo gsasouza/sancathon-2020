@@ -6,7 +6,7 @@ import * as React from 'react';
 import { Button, ButtonProps } from 'reakit';
 import styled, { css } from 'styled-components';
 
-interface Props extends ButtonProps {
+export interface Props extends ButtonProps {
   color?: string;
   fullWidth?: boolean;
   isLoading?: boolean;
@@ -33,6 +33,7 @@ const StyledButton = styled(Button)<Props>`
     background-color: ${props => getLightenDarkenColor(props.theme.palette[props.color || 'primary'], 30)};
   }
   &:disabled {
+    cursor: not-allowed;
     background-color: rgb(221, 221, 221);
   }
 `;

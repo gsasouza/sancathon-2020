@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Box } from 'reakit';
 import styled from 'styled-components';
+import { getFontColor } from '../utils';
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -8,6 +9,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   touched: boolean;
   error?: string;
   value?: string;
+  color?: string;
 }
 
 const Container = styled(Box)`
@@ -19,6 +21,7 @@ const Container = styled(Box)`
 
 const Label = styled.label`
   margin-bottom: 6px;
+  color: ${props => getFontColor(props.theme.palette[props.color || 'primary'])};
 `;
 
 const Input = styled.input<Omit<Props, 'label'>>`
@@ -39,10 +42,12 @@ const Error = styled.span<Pick<Props, 'touched' | 'error'>>`
   visibility: ${props => (props.error && props.touched ? 'visible' : 'hidden')};
 `;
 
-const TextInput = ({ label, name, error, touched, ...props }: Props) => {
+const TextInput = ({ label, name, error, touched, color, ...props }: Props) => {
   return (
     <Container>
-      <Label htmlFor={name}>{label}</Label>
+      <Label htmlFor={name} color={color}>
+        {label}
+      </Label>
       <Input id={name} name={name} {...props} error={error} touched={touched} />
       <Error error={error} touched={touched}>
         {error}
