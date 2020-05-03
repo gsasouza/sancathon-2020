@@ -2,8 +2,6 @@ import mailgun from 'mailgun-js';
 
 import { MAILGUN_API_KEY, MAILGUN_DOMAIN } from '../../../common';
 
-console.log(MAILGUN_API_KEY);
-
 export const sendEmail = ({ from = '', to, subject, text }) => {
   const mg = mailgun({ apiKey: MAILGUN_API_KEY, domain: MAILGUN_DOMAIN });
   return new Promise((resolve, reject) => {

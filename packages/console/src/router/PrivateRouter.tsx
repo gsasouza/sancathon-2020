@@ -5,16 +5,19 @@ import { PrivateWrapper, PrivateScreenLoading, LazyRouter } from '@sancathon/ui'
 import { isLoggedIn, logout } from '../utils/security';
 import routes from './routes';
 
-
 const sidebarProps = {
-  title: 'Sancathon',
-  items: [{ label: 'Usuários', path: '/dashboard/users' }],
+  title: 'NeoCloud',
+  items: [
+    { label: 'Home', path: '/dashboard/home' },
+    { label: 'Produtos', path: '/dashboard/products' },
+    { label: 'Equipamentos', path: '/dashboard/equipments' },
+  ],
   footer: {
     action: logout,
     icon: '',
-    label: 'Logout'
-  }
-}
+    label: 'Logout',
+  },
+};
 
 const PublicRouter = () => {
   const [isLoading, setLoading] = React.useState(true);
@@ -34,11 +37,9 @@ const PublicRouter = () => {
     <PrivateWrapper sidebarProps={sidebarProps}>
       <Switch>
         {routes.map(route => {
-          return (
-            <LazyRouter {...route} path={route.path(path)} key={route.path(path)} exact />
-          )
+          return <LazyRouter {...route} path={route.path(path)} key={route.path(path)} exact />;
         })}
-        <Redirect to="/dashboard/users" />
+        <Redirect to="/dashboard/home" />
       </Switch>
     </PrivateWrapper>
   );

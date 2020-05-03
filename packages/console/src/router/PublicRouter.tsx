@@ -25,7 +25,6 @@ const PublicRouter = () => {
       <Route path="/login">
         <LazyComponent component={React.lazy(() => import('../screens/Auth/Login'))} loadingComponent={LoadingScreen} />
       </Route>
-      {/*<Redirect to="/dashboard" />*/}
     </Switch>
   );
 };
