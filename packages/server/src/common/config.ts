@@ -33,7 +33,7 @@ export const JWT_SECRET = envVar
 
 export const MAILGUN_API_KEY = envVar
   .get('MAILGUN_API_KEY')
-  .default('')
+  .default('FAKE_KEY')
   .required(isProduction)
   .asString();
 
