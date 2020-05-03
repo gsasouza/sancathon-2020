@@ -33,10 +33,12 @@ export const JWT_SECRET = envVar
 
 export const MAILGUN_API_KEY = envVar
   .get('MAILGUN_API_KEY')
+  .default('')
   .required(isProduction)
   .asString();
 
 export const MAILGUN_DOMAIN = envVar
 .get('MAILGUN_DOMAIN')
+.default('')
 .required(isProduction)
 .asString();
