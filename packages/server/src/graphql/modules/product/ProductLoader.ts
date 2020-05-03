@@ -3,61 +3,60 @@ import DataLoader from 'dataloader';
 import escapeStringRegexp from 'escape-string-regexp';
 import { ConnectionArguments } from 'graphql-relay';
 
-import { UserModel, IUser } from './UserModel';
+import { ProductModel, IProduct } from './ProductModel';
 import { GraphQLContext, Types } from '../../../common/types';
 import { DataLoaderKey } from '../../loaders';
 
-export type { IUser } from './UserModel';
+export type { IProduct } from './ProductModel';
 
-export default class User {
+export default class Product {
   id: string;
   _id: string;
   name: string;
-  username: string;
-  products: Types.ObjectId[]
-  email: string;
-  removedAt: string | null;
+  price: number;
+  description: string;
+  removedAt: Date | null;
 
-  constructor(data: IUser) {
+  constructor(data: IProduct) {
     this.id = data._id;
     this._id = data._id;
     this.name = data.name;
-    this.products = data.products;
-    this.email = data.email;
-    this.username = data.username;
+    this.price = data.price;
+    this.description = data.description;
     this.removedAt = data.removedAt;
   }
 }
 
 export const getLoader = () =>
-  new DataLoader<DataLoaderKey, IUser>(ids => mongooseLoader(UserModel, ids as string[]));
+  new DataLoader<DataLoaderKey, IProduct>(ids => mongooseLoader(ProductModel, ids as string[]));
 
 const viewerCanSee = context => !!context.user;
 
-export const load = async (context: GraphQLContext, id: DataLoaderKey): Promise<User | null> => {
+export const load = async (context: GraphQLContext, id: DataLoaderKey): Promise<Product | null> => {
   if (!id) return null;
   try {
-    const data = await context.dataloaders.UserLoader.load(id);
+    const data = await context.dataloaders.ProductLoader.load(id);
     if (!data) return null;
-    return viewerCanSee(context) ? new User(data) : null;
+    return viewerCanSee(context) ? new Product(data) : null;
   } catch (err) {
     return null;
   }
 };
 
 export const clearCache = ({ dataloaders }: GraphQLContext, id: Types.ObjectId) =>
-  dataloaders.UserLoader.clear(id.toString());
+  dataloaders.ProductLoader.clear(id.toString());
 
-interface LoadUsersArgs extends ConnectionArguments {
+interface LoadProductsArgs extends ConnectionArguments {
   search?: string;
 }
 
-export const loadUsers = async (context: any, args: LoadUsersArgs) => {
+export const loadProducts = async (context: any, args: LoadProductsArgs) => {
   const defaultWhere = {
-    removedAt: null
+    removedAt: null,
   }
+
   const where = args.search ? { ...defaultWhere, name: { $regex: new RegExp(`^${escapeStringRegexp(args.search)}`, 'ig') } } : defaultWhere;
-  const users = UserModel.find(where, { _id: 1 }).sort({ createdAt: -1 }).lean();
+  const users = ProductModel.find(where, { _id: 1 }).sort({ createdAt: -1 }).lean();
   return connectionFromMongoCursor({
     cursor: users,
     context,

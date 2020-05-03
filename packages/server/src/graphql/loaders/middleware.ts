@@ -1,8 +1,9 @@
-import { UserLoader, EquipmentLoader } from './loaders';
+import { UserLoader, EquipmentLoader, ProductLoader } from './loaders';
 
 export const getLoaders = () => ({
   UserLoader: UserLoader.getLoader(),
-  EquipmentLoader: EquipmentLoader.getLoader()
+  EquipmentLoader: EquipmentLoader.getLoader(),
+  ProductLoader: ProductLoader.getLoader(),
 });
 
 export const dataloadersMiddleware = async (ctx, next) => {

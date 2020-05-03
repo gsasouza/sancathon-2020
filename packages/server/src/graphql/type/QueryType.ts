@@ -3,12 +3,12 @@ import { connectionArgs } from 'graphql-relay';
 
 import { NodeField } from '../interface/NodeInterface';
 
-import UserConnection from '../modules/user/UserConnection';
-import * as UserLoader from '../modules/user/UserLoader';
 import UserType from '../modules/user/UserType';
-import EquipmentConnection from '../modules/equipment/EquipmentConnection'
-import {EquipmentLoader} from '../loaders'
+import UserConnection from '../modules/user/UserConnection';
+import EquipmentConnection from '../modules/equipment/EquipmentConnection';
+import ProductConnection from '../modules/product/ProductConnection';
 
+import { EquipmentLoader, ProductLoader, UserLoader } from '../loaders';
 
 export default new GraphQLObjectType({
   name: 'Query',
@@ -38,6 +38,16 @@ export default new GraphQLObjectType({
         },
       },
       resolve: (_, args, context) => EquipmentLoader.loadEquipments(context, args),
+    },
+    products: {
+      type: ProductConnection.connectionType,
+      args: {
+        ...connectionArgs,
+        search: {
+          type: GraphQLString,
+        },
+      },
+      resolve: (_, args, context) => ProductLoader.loadProducts(context, args),
     },
   }),
 });
