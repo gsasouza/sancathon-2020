@@ -83,6 +83,9 @@ type Mutation {
   EquipmentCreate(input: EquipmentCreateInput!): EquipmentCreatePayload
   EquipmentEdit(input: EquipmentEditInput!): EquipmentEditPayload
   EquipmentRemove(input: EquipmentRemoveInput!): EquipmentRemovePayload
+  ProductCreate(input: ProductCreateInput!): ProductCreatePayload
+  ProductEdit(input: ProductEditInput!): ProductEditPayload
+  ProductRemove(input: ProductRemoveInput!): ProductRemovePayload
 }
 
 """An object with an ID"""
@@ -106,6 +109,72 @@ type PageInfo {
   endCursor: String
 }
 
+"""Product data"""
+type Product implements Node {
+  """The ID of an object"""
+  id: ID!
+  name: String
+  description: String
+  price: Float
+  removedAt: String
+}
+
+"""A connection to a list of items."""
+type ProductConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ProductEdge]
+  count: Int
+}
+
+input ProductCreateInput {
+  name: String!
+  description: String!
+  price: Float!
+  clientMutationId: String
+}
+
+type ProductCreatePayload {
+  productEdge: ProductEdge
+  error: String
+  clientMutationId: String
+}
+
+"""An edge in a connection."""
+type ProductEdge {
+  """The item at the end of the edge"""
+  node: Product
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+input ProductEditInput {
+  id: ID!
+  description: String
+  price: Float
+  clientMutationId: String
+}
+
+type ProductEditPayload {
+  productEdge: ProductEdge
+  error: String
+  clientMutationId: String
+}
+
+input ProductRemoveInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type ProductRemovePayload {
+  productEdge: ProductEdge
+  error: String
+  clientMutationId: String
+}
+
 """The root of all... queries"""
 type Query {
   """Fetches an object given its ID"""
@@ -116,6 +185,7 @@ type Query {
   me: User
   users(after: String, first: Int, before: String, last: Int, search: String): UserConnection
   equipments(after: String, first: Int, before: String, last: Int, search: String): EquipmentConnection
+  products(after: String, first: Int, before: String, last: Int, search: String): ProductConnection
 }
 
 """User data"""
@@ -125,6 +195,7 @@ type User implements Node {
   _id: String
   name: String
   username: String
+  products: [Product]
   email: String
   removedAt: String
 }
