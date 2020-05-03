@@ -66,3 +66,9 @@ export const loadProducts = async (context: any, args: LoadProductsArgs) => {
     loader: load,
   });
 };
+
+export const loggedUserHasProduct = (obj, args, context) => {
+  if (!context.user) return false;
+  if (obj.meHasSigned !== undefined) return obj.meHasSigned;
+  return context.user.products.some((product) => obj._id.equals(product))
+}
