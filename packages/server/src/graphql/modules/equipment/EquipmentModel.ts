@@ -8,7 +8,7 @@ export interface IEquipment extends Document {
   user: IUser;
 }
 
-const adminEquipmentSchema = new Schema(
+const equipmentSchema = new Schema(
   {
     name: {
       type: String,
@@ -22,13 +22,15 @@ const adminEquipmentSchema = new Schema(
     removedAt: {
       type: Date,
       default: null,
+      required: true,
     },
     user: {
       type: Schema.Types.ObjectId,
       ref: 'user',
+      required: true,
     },
   },
   { timestamps: true },
 );
 
-export const EquipmentModel: Model<IEquipment> = mongoose.model('equipment', adminEquipmentSchema);
+export const EquipmentModel: Model<IEquipment> = mongoose.model('equipment', equipmentSchema);
