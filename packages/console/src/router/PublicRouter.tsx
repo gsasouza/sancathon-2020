@@ -20,7 +20,7 @@ const PublicRouter = () => {
   return (
     <Switch>
       <Route path="/" exact>
-        <LazyComponent component={React.lazy(() => import('../screens/Landing/LandingPage'))} />
+        <LazyComponent component={React.lazy(() => import('../screens/Landing/LandingPage'))} loadingComponent={LoadingScreen} />
       </Route>
       <Route path="/login">
         <LazyComponent component={React.lazy(() => import('../screens/Auth/Login'))} loadingComponent={LoadingScreen} />
