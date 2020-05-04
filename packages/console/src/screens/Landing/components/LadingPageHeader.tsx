@@ -11,7 +11,6 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   padding-left: 1rem;
-  justify-content: flex-start;
   position: sticky;
   top: 0;
 `;
@@ -29,24 +28,19 @@ const NavItem = styled.a`
   &:hover {
     color: ${props => getLightenDarkenColor(props.theme.palette.secondary, 30)};
     text-decoration: underline;
-  }  
+  }
 `;
 
 const Nav = styled.nav`
   margin: 0 auto 0 1.5rem;
-  
 `;
 
 const LadingPageHeader = () => {
   const history = useHistory();
   return (
     <Header>
-      <Logo src="https://via.placeholder.com/120x40/B9D6F2"/>
-      <Nav>
-        <NavItem>HOME</NavItem>
-        <NavItem>SOBRE</NavItem>
-        <NavItem>CONTATO</NavItem>
-      </Nav>
+      <Logo src="https://via.placeholder.com/120x40/B9D6F2" />
+      <Nav></Nav>
       <TextButton color="secondary" onClick={() => history.push('/login')}>
         Login
       </TextButton>
