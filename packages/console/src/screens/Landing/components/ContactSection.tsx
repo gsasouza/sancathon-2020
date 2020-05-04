@@ -12,13 +12,11 @@ import { ContactCreateMutation } from './mutations/ContactCreateMutation';
 import { toast } from 'react-toastify';
 
 const Section = styled(BaseSection)`
-  background-color: ${props => props.theme.palette.accent};
-  display: inline-grid;
-  grid-template-columns: 1fr 1fr;
+  background-color: transparent;
 `;
 
 const Form = styled.form`
-  width: 100%;
+  width: 50%;
   max-width: 600px;
   margin: 1rem auto;
 `;
