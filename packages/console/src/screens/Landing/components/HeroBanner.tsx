@@ -8,24 +8,21 @@ import ContactSection from './ContactSection';
 import media from 'styled-media-query';
 
 const Container = styled(BaseSection)`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  min-height: calc(100vh - 3.5rem);
+  min-height: 100vh;
   height: 100%;
   width: 100%;
   background-image: url(${heroImage});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  ${media.lessThan('medium')`
-    grid-template-columns: 1fr;
-  `}
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Title = styled.h1`
-  font-size: 8vh;
-  color: #ffffff;
+  font-size: 5vh;
+  color: ${props => props.theme.palette.secondary};
   margin-left: 2rem;
   ${media.lessThan('medium')`
     text-align: center;
@@ -34,21 +31,38 @@ const Title = styled.h1`
 `;
 
 const Subtitle = styled(Title)`
-  font-size: 6vh;
+  font-size: 3vh;
 `;
 
-const TextWrapper = styled.div``;
+const TextWrapper = styled.div`
+  max-width: 1300px;
+`;
+
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1600px;
+  margin: auto;
+  width: 100%;
+  ${media.lessThan('medium')`
+    grid-template-columns: 1fr;
+  `}
+`;
 
 const HeroBanner = () => {
   return (
     <Container>
-      <TextWrapper>
-        <div>
-          <Title>NeoCloud</Title>
-          <Subtitle>A solução para o delivery pós-pandemia</Subtitle>
-        </div>
-      </TextWrapper>
-      <ContactSection></ContactSection>
+      <Wrapper>
+        <TextWrapper>
+          <div>
+            <Title>NeoCloud</Title>
+            <Subtitle>A solução para o delivery pós-pandemia</Subtitle>
+          </div>
+        </TextWrapper>
+        <ContactSection />
+      </Wrapper>
+
     </Container>
   );
 };

@@ -4,10 +4,16 @@ import * as React from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 
+// @ts-ignore
+import heroImage from '../../../static/img/hero-image.jpg';
+
 const ImageBackground = styled.div`
   width: 100%;
   position: absolute;
-  background-size: cover !important;
+  background-image: url(${heroImage});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 const Wrapper = styled.main(
@@ -18,7 +24,6 @@ const Wrapper = styled.main(
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: linear-gradient(180deg, ${props.theme.palette.primary} 77%, ${props.theme.palette.accent} 100%);
 `,
 );
 
@@ -44,7 +49,8 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
- ${media.lessThan('medium')`
+  font-size: 5vh;
+  ${media.lessThan('medium')`
     text-align: center;
   `}
 `;

@@ -1,4 +1,4 @@
-import Sidebar from './Sidebar';
+import Sidebar, { Props as SidebarProps } from './Sidebar';
 
 import * as React from 'react';
 import styled from 'styled-components';
@@ -6,14 +6,14 @@ import styled from 'styled-components';
 const Main = styled.main`
   display: flex;
   min-height: 100vh;
-  background-color: ${props => props.theme.palette.accent};
+  background-color: #fffef8;
   .loading-circle {
     background: ${props => props.theme.palette.accent};
   }
 `;
 
 const Content = styled.section`
-  background-color: #e3e3e3;
+  background-color: ${props => props.theme.palette.primary};
   flex: 1;
   border-radius: 50px;
   padding: 2rem;
@@ -23,7 +23,11 @@ const Content = styled.section`
   flex-direction: column;
 `;
 
-const PrivateWrapper = ({ children, sidebarProps }) => {
+interface Props {
+  sidebarProps?: SidebarProps;
+}
+
+const PrivateWrapper: React.FC<Props> = ({ children, sidebarProps }) => {
   return (
     <Main>
       <Sidebar {...sidebarProps} />

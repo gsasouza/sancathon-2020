@@ -1,7 +1,12 @@
 import * as React from 'react';
+import { ContentHeader } from '@sancathon/ui/src';
 
 const Home = () => {
-  return <div>Home</div>
+  return (
+    <>
+      <ContentHeader title="Assinatura" />
+    </>
+  );
 };
 
 export default Home;

@@ -12,12 +12,13 @@ const TableContainer = styled.table`
   flex-direction: column;
 `;
 
-function Table<T>({ columns, data, onRowClick }: TableProps<T>) {
+function Table<T>({ columns, data, onRowClick, footer }: TableProps<T>) {
   if (!data) return <span>Nenhum resultado a ser exibido</span>
   return (
     <TableContainer>
       <TableHeader columns={columns} />
       <TableBody data={data} columns={columns} onRowClick={onRowClick} />
+      {footer}
     </TableContainer>
   );
 }

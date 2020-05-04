@@ -8,8 +8,8 @@ import routes from './routes';
 const sidebarProps = {
   title: 'NeoCloud',
   items: [
-    { label: 'Home', path: '/dashboard/home' },
-    { label: 'Seriços', path: '/dashboard/services' },
+    // { label: 'Home', path: '/dashboard/home' },
+    // { label: 'Serviços', path: '/dashboard/services' },
     { label: 'Equipamentos', path: '/dashboard/equipments' },
   ],
   footer: {
@@ -39,7 +39,7 @@ const PublicRouter = () => {
         {routes.map(route => {
           return <LazyRouter {...route} path={route.path(path)} key={route.path(path)} exact />;
         })}
-        <Redirect to="/dashboard/home" />
+        <Redirect to="/dashboard/equipments" />
       </Switch>
     </PrivateWrapper>
   );

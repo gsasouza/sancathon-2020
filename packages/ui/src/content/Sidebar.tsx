@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { RoundedButton } from '../buttons'
+import { RoundedButton } from '../buttons';
 
 const Aside = styled.aside`
   overflow: auto;
@@ -9,15 +9,18 @@ const Aside = styled.aside`
   flex-direction: column;
   width: 180px;
   padding: 2rem 0 2rem 1rem;
-  color: #fff;
+  color: ${props => props.theme.palette.primary};
 `;
 
 const Header = styled.header`
   font-size: 22px;
   text-align: center;
   padding: 0 0 1rem 0;
+  > * {
+    font-weight: bold;
+  }
   margin-right: 1rem;
-  border-bottom: 1px solid #f8f8f840;
+  border-bottom: 1px solid ${props => props.theme.palette.secondary};
 `;
 
 const Footer = styled.footer`
@@ -26,7 +29,7 @@ const Footer = styled.footer`
 
 const Item = styled(NavLink)`
   text-decoration: none;
-  color: #fff;
+  color: ${props => props.theme.palette.primary};
   position: relative;
   font-size: 18px;
   > div {
@@ -41,23 +44,23 @@ const ItemsWrapper = styled.nav`
   .item-selected {
     transition: border-radius 0.5s;
     border-radius: 50px 0 0 50px;
-    background-color: #e3e3e3;
-    color: ${props => props.theme.palette.accent};
+    background-color: ${props => props.theme.palette.primary};
+    color: ${props => props.theme.palette.secondary};
   }
 
   .item-selected + a {
     transition: border-radius 0.5s;
-    background-color: #e3e3e3;
+    background-color: ${props => props.theme.palette.primary};
     > div {
       transition: border-radius 0.5s;
       border-radius: 0 50px 0 0;
-      background-color: ${props => props.theme.palette.accent};
+      background-color: #fffef8;
     }
   }
   .item-selected::before {
     position: absolute;
     content: ' ';
-    background: #e3e3e3;
+    background: ${props => props.theme.palette.primary};
     right: 0;
     width: 50px;
     height: 2rem;
@@ -66,7 +69,7 @@ const ItemsWrapper = styled.nav`
   .item-selected::after {
     position: absolute;
     content: ' ';
-    background: ${props => props.theme.palette.accent};
+    background: #fffef8;
     right: 0;
     width: 50px;
     height: 2rem;
@@ -77,7 +80,7 @@ const ItemsWrapper = styled.nav`
     > div {
       transition: border-radius 0.5s;
       border-radius: 0 50px 0 0;
-      background-color: ${props => props.theme.palette.accent};
+      background-color: #fffef8;
       width: 100%;
       height: 50px;
     }
@@ -87,16 +90,29 @@ const ItemsWrapper = styled.nav`
 const BorderPresence = styled.div`
   width: 100%;
   z-index: 1;
-  background: #e3e3e3;
+  background: ${props => props.theme.palette.primary};
   > div {
     border-radius: 0;
-    background-color: ${props => props.theme.palette.accent};
+    background-color: #fffef8;
     width: 100%;
     height: 50px;
   }
 `;
 
-const Sidebar = ({ title, items = [], footer }) => {
+export interface Props {
+  title?: string;
+  items?: Array<{
+    label: string;
+    path: string;
+  }>;
+  footer?: {
+    action: () => void;
+    icon: string;
+    label: string;
+  };
+}
+
+const Sidebar: React.FC<Props> = ({ title, items = [], footer }) => {
   return (
     <Aside>
       <Header>
@@ -114,7 +130,9 @@ const Sidebar = ({ title, items = [], footer }) => {
       </ItemsWrapper>
       {footer && (
         <Footer>
-          <RoundedButton color="secondary" onClick={footer.action}>{footer.label}</RoundedButton>
+          <RoundedButton color="secondary" onClick={footer.action}>
+            {footer.label}
+          </RoundedButton>
         </Footer>
       )}
     </Aside>
