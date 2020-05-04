@@ -7,7 +7,6 @@ import { ProductsListPaginationQuery } from './__generated__/ProductsListPaginat
 
 import { ProductSignMutation } from './mutations/ProductSignMutation';
 import { ProductUnSignMutation } from './mutations/ProductUnSignMutation';
-import {ProductsListQuery} from './__generated__/ProductsListQuery.graphql'
 
 const formatCurrency = (value) =>
   new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(
