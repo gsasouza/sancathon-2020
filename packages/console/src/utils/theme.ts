@@ -1,8 +1,8 @@
 const theme = {
   palette: {
-    primary: '#202124',
-    secondary: '#B9D6F2',
-    accent: '#001242',
+    primary: '#353d47',
+    secondary: '#FF9052',
+    accent: '#D9D9D9',
     error: '#E55812',
     success: '#95C623',
   },

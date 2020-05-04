@@ -72,22 +72,24 @@ const LoginInnerForm = () => {
     <Wrapper>
       <Card width="25rem">
         <CardHeader>Faça login para continuar</CardHeader>
-        <TextInput label="Usuário" name="username" {...getFieldProps('username')} {...getFieldMeta('username')} />
+        <TextInput label="Usuário" name="username" {...getFieldProps('username')} {...getFieldMeta('username')} color="accent" />
         <TextInput
           label="Senha"
           name="password"
           {...getFieldProps('password')}
           {...getFieldMeta('password')}
           type="password"
+          color="accent"
         />
         <Checkbox
           {...getFieldProps('remember')}
           onChange={e => setFieldValue('remember', e.target.checked)}
-          name="remeber"
+          name="remember"
+          color="secondary"
           label="Lembrar de mim"
         />
         <RoundedButton
-          color="accent"
+          color="secondary"
           fullWidth
           onClick={handleSubmit}
           disabled={isSubmitting || !isValid}

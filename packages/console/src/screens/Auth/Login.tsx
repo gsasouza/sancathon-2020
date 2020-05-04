@@ -18,7 +18,7 @@ const Wrapper = styled.main(
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: linear-gradient(180deg, ${props.theme.palette.primary} 77%, ${props.theme.palette.accent} 100%);
+  background: ${props.theme.palette.primary};
 `,
 );
 

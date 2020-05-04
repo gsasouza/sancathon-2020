@@ -9,7 +9,7 @@ const sidebarProps = {
   title: 'NeoCloud',
   items: [
     { label: 'Home', path: '/dashboard/home' },
-    { label: 'Seriços', path: '/dashboard/services' },
+    { label: 'Serviços', path: '/dashboard/services' },
     { label: 'Equipamentos', path: '/dashboard/equipments' },
   ],
   footer: {

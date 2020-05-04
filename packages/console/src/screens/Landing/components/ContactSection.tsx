@@ -6,14 +6,22 @@ import { useMutation } from 'relay-hooks';
 import { useRelayEnvironment } from 'react-relay/hooks';
 import { toast } from 'react-toastify';
 
-import { RoundedButton, TextInput } from '@sancathon/ui/src';
+import {RoundedButton, TextInput, Card, getLightenDarkenColor} from '@sancathon/ui/src';
 import { ContactCreateMutation } from './mutations/ContactCreateMutation';
+import media from 'styled-media-query'
 
-const Section = styled.section``;
+const Section = styled(Card)`
+  max-width: 400px;
+  width: 100%;
+  margin: auto;
+  padding: 1rem;
+  ${media.lessThan('medium')`
+    padding: 0;
+  `}
+  background-color: ${props => getLightenDarkenColor(props.theme.palette.primary, -30) + 'c4'};
+`;
 
 const Form = styled.form`
-  width: 50%;
-  max-width: 600px;
   margin: 1rem auto;
 `;
 

@@ -53,18 +53,18 @@ const Row = styled.div`
     color: #fff;
   }
   input[type='checkbox']:checked + label::before {
-    background-color: ${props => props.theme.palette.accent};
+    background-color: ${props => props.theme.palette[props.color || 'accent']};
   }
   input[type='checkbox']:focus + label::before {
-    outline: ${props => props.theme.palette.accent} auto 5px;
+    outline: ${props => props.theme.palette[props.color || 'accent']} auto 5px;
   }
 `;
 
 const Label = styled.label``;
 
-const Checkbox = ({ label, value, onChange, name }) => {
+const Checkbox = ({ label, value, onChange, name, color }) => {
   return (
-    <Row>
+    <Row color={color}>
       <ReakitCheckbox checked={value} onChange={onChange} name={name} id={name} />
       <Label htmlFor={name}>{label}</Label>
     </Row>

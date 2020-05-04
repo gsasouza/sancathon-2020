@@ -10,7 +10,7 @@ const Wrapper = styled.main(
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, ${props.theme.palette.primary} 77%, ${props.theme.palette.accent} 100%);  
+  background: ${props.theme.palette.primary};  
 `,
 );
 

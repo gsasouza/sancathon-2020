@@ -1,7 +1,8 @@
 import * as React from 'react';
+import SetupModal from '../Products/components/SetupModal';
 
 const Home = () => {
-  return <div>Home</div>
+  return <SetupModal />;
 };
 
 export default Home;
