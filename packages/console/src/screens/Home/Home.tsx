@@ -1,8 +1,12 @@
 import * as React from 'react';
-import SetupModal from '../Products/components/SetupModal';
+import { ContentHeader } from '@sancathon/ui/src';
 
 const Home = () => {
-  return <SetupModal />;
+  return (
+    <>
+      <ContentHeader title="Assinatura" />
+    </>
+  );
 };
 
 export default Home;

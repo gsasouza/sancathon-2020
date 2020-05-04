@@ -7,6 +7,12 @@ import { ProductsListPaginationQuery } from './__generated__/ProductsListPaginat
 
 import { ProductSignMutation } from './mutations/ProductSignMutation';
 import { ProductUnSignMutation } from './mutations/ProductUnSignMutation';
+import {ProductsListQuery} from './__generated__/ProductsListQuery.graphql'
+
+const formatCurrency = (value) =>
+  new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(
+    value,
+  )
 
 const Products = ({ preloadedQuery }) => {
   const [signProduct] = useMutation(ProductSignMutation);
@@ -29,12 +35,13 @@ const Products = ({ preloadedQuery }) => {
     {
       header: { label: 'Valor' },
       property: 'price',
+      renderRow: ({ price }) => <span>{formatCurrency(price)}</span>
     },
     {
       header: { label: 'Assinado' },
       property: 'meHasSigned',
       renderRow: ({ name, meHasSigned, id }) => (
-        <Checkbox value={meHasSigned} label={''} name={name} onChange={handleSignChange(id)} />
+        <Checkbox value={meHasSigned} label={''} name={name} onChange={handleSignChange(id)} color="secondary" />
       ),
     },
   ];
