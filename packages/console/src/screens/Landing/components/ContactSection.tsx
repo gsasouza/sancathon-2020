@@ -4,16 +4,12 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useMutation } from 'relay-hooks';
 import { useRelayEnvironment } from 'react-relay/hooks';
-
-import { RoundedButton, TextInput } from '@sancathon/ui/src';
-
-import BaseSection from './Section';
-import { ContactCreateMutation } from './mutations/ContactCreateMutation';
 import { toast } from 'react-toastify';
 
-const Section = styled(BaseSection)`
-  background-color: transparent;
-`;
+import { RoundedButton, TextInput } from '@sancathon/ui/src';
+import { ContactCreateMutation } from './mutations/ContactCreateMutation';
+
+const Section = styled.section``;
 
 const Form = styled.form`
   width: 50%;
