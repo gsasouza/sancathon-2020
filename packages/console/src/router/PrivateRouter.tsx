@@ -8,7 +8,7 @@ import routes from './routes';
 const sidebarProps = {
   title: 'NeoCloud',
   items: [
-    // { label: 'Home', path: '/dashboard/home' },
+    { label: 'Pedidos', path: '/dashboard/orders' },
     // { label: 'Serviços', path: '/dashboard/services' },
     { label: 'Equipamentos', path: '/dashboard/equipments' },
   ],
