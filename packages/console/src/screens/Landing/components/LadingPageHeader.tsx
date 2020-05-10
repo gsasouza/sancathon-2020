@@ -20,14 +20,14 @@ const Nav = styled.nav`
   margin: 0 auto 0 1.5rem;
 `;
 
-const LadingPageHeader = () => {
+const LadingPageHeader = (props) => {
   const history = useHistory();
+  const { action = () => history.push('/login'), actionLabel = 'Login' } = props;
   return (
     <Header>
-      {/*<Logo src="https://via.placeholder.com/120x40/B9D6F2" />*/}
       <Nav />
-      <TextButton color="secondary" onClick={() => history.push('/login')}>
-        Login
+      <TextButton color="secondary" onClick={action}>
+        {actionLabel}
       </TextButton>
     </Header>
   );

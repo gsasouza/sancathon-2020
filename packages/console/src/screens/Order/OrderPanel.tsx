@@ -2,6 +2,8 @@ import * as React from 'react';
 import Board from '@lourenci/react-kanban';
 import styled from 'styled-components';
 import Card from './Card';
+import LadingPageHeader from '../Landing/components/LadingPageHeader';
+import {logout} from '../../utils/security'
 
 const Container = styled.div`
   .sc-fzoXzr {
@@ -50,8 +52,6 @@ const mockedCards = [
     company: 'UBER_EATS',
     description: 'Add capability to add a card in a column',
   },
-
-
 ];
 
 const board = {
@@ -145,12 +145,21 @@ const board = {
     },
   ],
 };
+const Wrapper = styled.section`
+  margin-top: 2rem;
+  > header {
+    margin: 0 -2rem;
+  }
+`;
 
 const OrderPanel = () => {
   return (
-    <Container>
-      <Board initialBoard={board} renderCard={Card} disableColumnDrag={true} />
-    </Container>
+    <Wrapper>
+      <LadingPageHeader action={logout} actionLabel="Sair"/>
+      <Container>
+        <Board initialBoard={board} renderCard={Card} disableColumnDrag={true} />
+      </Container>
+    </Wrapper>
   );
 };
 

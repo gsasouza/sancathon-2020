@@ -27,6 +27,7 @@ export const Header = styled.div`
 export const Logo = styled.img`
   width: 2rem;
   height: 2rem;
+  margin: 0 0 0 auto !important;;
 `;
 
 const Body = styled.div`

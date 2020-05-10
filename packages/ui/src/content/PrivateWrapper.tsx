@@ -15,9 +15,9 @@ const Main = styled.main`
 const Content = styled.section`
   background-color: ${props => props.theme.palette.primary};
   flex: 1;
-  border-radius: 50px;
+  //border-radius: 50px;
   padding: 2rem;
-  margin: 1rem 1rem 1rem 0;
+  //margin: 1rem 1rem 1rem 0;
   box-shadow: 7px 21px 55px -38px ${props => props.theme.palette.primary};
   display: flex;
   flex-direction: column;
@@ -30,7 +30,7 @@ interface Props {
 const PrivateWrapper: React.FC<Props> = ({ children, sidebarProps }) => {
   return (
     <Main>
-      <Sidebar {...sidebarProps} />
+      {sidebarProps && <Sidebar {...sidebarProps} />}
       <Content>{children}</Content>
     </Main>
   );

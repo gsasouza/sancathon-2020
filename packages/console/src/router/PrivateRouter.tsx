@@ -34,7 +34,7 @@ const PublicRouter = () => {
   if (isLoading) return <PrivateScreenLoading />;
 
   return (
-    <PrivateWrapper sidebarProps={sidebarProps}>
+    <PrivateWrapper>
       <Switch>
         {routes.map(route => {
           return <LazyRouter {...route} path={route.path(path)} key={route.path(path)} exact />;

@@ -74,14 +74,16 @@ const orders = [
 
 const PublicOrders = () => {
   return (
-    <Content>
-      <Title>Pedidos</Title>
-      <Orders>
-        {orders.map(order => (
-          <PublicCard {...order} />
-        ))}
-      </Orders>
-    </Content>
+    <>
+      <Content>
+        <Title>Pedidos</Title>
+        <Orders>
+          {orders.map(order => (
+            <PublicCard {...order} />
+          ))}
+        </Orders>
+      </Content>
+    </>
   );
 };
 
