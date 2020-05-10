@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@hot-loader/react-dom": "^16.11.0",
+    "@lourenci/react-kanban": "^1.1.1",
     "@sancathon/babel": "1.0.0",
     "@sancathon/relay": "1.0.0",
     "@sancathon/ui": "1.0.0",
