@@ -39,42 +39,19 @@ const mockedCards = [
     description: 'Add capability to add a card in a column',
   },
   {
-    id: 1,
+    id: 2,
     title: 'Add card',
     company: 'UBER_EATS',
     description: 'Add capability to add a card in a column',
   },
   {
-    id: 1,
+    id: 3,
     title: 'Add card',
     company: 'UBER_EATS',
     description: 'Add capability to add a card in a column',
   },
-  {
-    id: 1,
-    title: 'Add card',
-    description: 'Add capability to add a card in a column',
-  },
-  {
-    id: 1,
-    title: 'Add card',
-    description: 'Add capability to add a card in a column',
-  },
-  {
-    id: 1,
-    title: 'Add card',
-    description: 'Add capability to add a card in a column',
-  },
-  {
-    id: 1,
-    title: 'Add card',
-    description: 'Add capability to add a card in a column',
-  },
-  {
-    id: 1,
-    title: 'Add card',
-    description: 'Add capability to add a card in a column',
-  },
+
+
 ];
 
 const board = {
@@ -82,29 +59,74 @@ const board = {
     {
       id: 'new',
       title: 'Novos Pedidos',
-      cards: mockedCards,
+      cards: [
+        {
+          id: 1,
+          title: 'Add card',
+          description: 'Add capability to add a card in a column',
+        },
+        {
+          id: 2,
+          title: 'Add card',
+          company: 'UBER_EATS',
+          description: 'Add capability to add a card in a column',
+        },
+        {
+          id: 3,
+          title: 'Add card',
+          company: 'UBER_EATS',
+          description: 'Add capability to add a card in a column',
+        },
+      ],
     },
     {
       id: 'inProgress',
       title: 'Em Andamento',
-      cards: mockedCards,
+      cards: [
+        {
+          id: 4,
+          title: 'Add card',
+          description: 'Add capability to add a card in a column',
+        },
+        {
+          id: 5,
+          title: 'Add card',
+          description: 'Add capability to add a card in a column',
+        },
+        {
+          id: 6,
+          title: 'Add card',
+          description: 'Add capability to add a card in a column',
+        },
+        {
+          id: 7,
+          title: 'Add card',
+          description: 'Add capability to add a card in a column',
+        },
+      ],
     },
     {
       id: 'waiting',
       title: 'Aguardando Entrega',
-      cards: mockedCards,
+      cards: [
+        {
+          id: 8,
+          title: 'Add card',
+          description: 'Add capability to add a card in a column',
+        },
+      ],
     },
     {
       id: 'finished',
       title: 'Finalizados',
       cards: [
         {
-          id: 4,
+          id: 9,
           title: 'Drag-n-drop support',
           description: 'Move a card between the columns',
         },
         {
-          id: 4,
+          id: 10,
           title: 'Drag-n-drop support',
           description: 'Move a card between the columns',
         },
@@ -115,7 +137,7 @@ const board = {
       title: 'Cancelados',
       cards: [
         {
-          id: 5,
+          id: 11,
           title: 'Drag-n-drop support',
           description: 'Move a card between the columns',
         },

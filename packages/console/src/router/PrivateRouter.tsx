@@ -39,7 +39,7 @@ const PublicRouter = () => {
         {routes.map(route => {
           return <LazyRouter {...route} path={route.path(path)} key={route.path(path)} exact />;
         })}
-        <Redirect to="/dashboard/equipments" />
+        <Redirect to="/dashboard/orders" />
       </Switch>
     </PrivateWrapper>
   );
