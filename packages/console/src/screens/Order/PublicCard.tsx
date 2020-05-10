@@ -7,11 +7,15 @@ const Card = styled.div`
   margin: 0.5rem;
   width: 295px;
   height: 150px;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   background: #fffef8;
   > h1 {
     font-size: 30px;
+    margin: 0;
+  }
+  > h1:last-child {
+    color: ${props => props.theme.palette.primary};
   }
 `;
 
@@ -26,7 +30,7 @@ const Header = styled(BaseHeader)`
   justify-content: space-between;
 `;
 
-const PublicCard = ({ reference, restaurant, company }) => {
+const PublicCard = ({ reference, restaurant, kitchen, company }) => {
   const logo = getLogo(company);
   return (
     <Card>
@@ -35,6 +39,7 @@ const PublicCard = ({ reference, restaurant, company }) => {
         <Logo src={logo} />
       </Header>
       <h1>{restaurant}</h1>
+      <h1>{kitchen}</h1>
     </Card>
   );
 };

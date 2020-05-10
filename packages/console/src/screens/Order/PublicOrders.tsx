@@ -27,47 +27,56 @@ const Title = styled.h1`
 const orders = [
   {
     reference: 'Pedido #1234',
-    restaurant: 'Nome Restaurante (1)',
+    restaurant: 'Nome Restaurante',
     company: 'IFOOD',
+    kitchen: 'Cozinha 1',
   },
   {
     reference: 'Pedido #1234',
-    restaurant: 'Nome Restaurante (2)',
+    restaurant: 'Nome Restaurante',
+    company: 'UBER_EATS',
+    kitchen: 'Cozinha 2',
+  },
+  {
+    reference: 'Pedido #1234',
+    restaurant: 'Nome Restaurante',
+    company: 'IFOOD',
+    kitchen: 'Cozinha 3',
+  },
+  {
+    reference: 'Pedido #1234',
+    restaurant: 'Nome Restaurante',
+    company: 'UBER_EATS',
+    kitchen: 'Cozinha 2',
+  },
+  {
+    reference: 'Pedido #1234',
+    restaurant: 'Nome Restaurante',
+    company: 'IFOOD',
+    kitchen: 'Cozinha 1',
+  },
+  {
+    reference: 'Pedido #1234',
+    restaurant: 'Nome Restaurante',
+    company: 'UBER_EATS',
+    kitchen: 'Cozinha 3',
+  },
+  {
+    reference: 'Pedido #1234',
+    restaurant: 'Nome Restaurante',
+    company: 'IFOOD',
+    kitchen: 'Cozinha 2',
+  },
+  {
+    reference: 'Pedido #1234',
+    restaurant: 'Nome Restaurante',
+    kitchen: 'Cozinha 2',
     company: 'UBER_EATS',
   },
   {
     reference: 'Pedido #1234',
-    restaurant: 'Nome Restaurante (3)',
-    company: 'IFOOD',
-  },
-  {
-    reference: 'Pedido #1234',
-    restaurant: 'Nome Restaurante (4)',
-    company: 'UBER_EATS',
-  },
-  {
-    reference: 'Pedido #1234',
-    restaurant: 'Nome Restaurante (5)',
-    company: 'IFOOD',
-  },
-  {
-    reference: 'Pedido #1234',
-    restaurant: 'Nome Restaurante (6)',
-    company: 'UBER_EATS',
-  },
-  {
-    reference: 'Pedido #1234',
-    restaurant: 'Nome Restaurante (7)',
-    company: 'IFOOD',
-  },
-  {
-    reference: 'Pedido #1234',
-    restaurant: 'Nome Restaurante (8)',
-    company: 'UBER_EATS',
-  },
-  {
-    reference: 'Pedido #1234',
-    restaurant: 'Nome Restaurante (9)',
+    restaurant: 'Nome Restaurante',
+    kitchen: 'Cozinha 9',
     company: 'IFOOD',
   },
 ];
