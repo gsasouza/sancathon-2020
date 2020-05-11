@@ -60,7 +60,7 @@ const LoginScreen = () => {
     <ImageBackground>
       <Wrapper>
         <Container>
-          <Title>NewKitchens</Title>
+          <Title>NeoKitchens</Title>
           <LoginForm />
         </Container>
       </Wrapper>

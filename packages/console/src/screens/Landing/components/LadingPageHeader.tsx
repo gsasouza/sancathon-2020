@@ -20,11 +20,12 @@ const Nav = styled.nav`
   margin: 0 auto 0 1.5rem;
 `;
 
-const LadingPageHeader = (props) => {
+const LadingPageHeader = props => {
   const history = useHistory();
   const { action = () => history.push('/login'), actionLabel = 'Login' } = props;
   return (
     <Header>
+      <h2>NeoKitchens</h2>
       <Nav />
       <TextButton color="secondary" onClick={action}>
         {actionLabel}

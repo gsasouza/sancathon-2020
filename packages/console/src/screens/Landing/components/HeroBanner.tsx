@@ -56,7 +56,7 @@ const HeroBanner = () => {
       <Wrapper>
         <TextWrapper>
           <div>
-            <Title>NewKitchens</Title>
+            <Title>NeoKitchens</Title>
             <Subtitle>Desenvolvendo as cozinhas do futuro</Subtitle>
           </div>
         </TextWrapper>

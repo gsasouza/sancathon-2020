@@ -6,7 +6,7 @@ import { isLoggedIn, logout } from '../utils/security';
 import routes from './routes';
 
 const sidebarProps = {
-  title: 'NewKitchens',
+  title: 'NeoKitchens',
   items: [
     { label: 'Pedidos', path: '/dashboard/orders' },
     // { label: 'Serviços', path: '/dashboard/services' },
