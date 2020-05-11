@@ -6,7 +6,7 @@ import { isLoggedIn, logout } from '../utils/security';
 import routes from './routes';
 
 const sidebarProps = {
-  title: 'NeoCloud',
+  title: 'NewKitchens',
   items: [
     { label: 'Pedidos', path: '/dashboard/orders' },
     // { label: 'Serviços', path: '/dashboard/services' },

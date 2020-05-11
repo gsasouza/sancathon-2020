@@ -56,8 +56,8 @@ const HeroBanner = () => {
       <Wrapper>
         <TextWrapper>
           <div>
-            <Title>NeoCloud</Title>
-            <Subtitle>A solução para o delivery pós-pandemia</Subtitle>
+            <Title>NewKitchens</Title>
+            <Subtitle>Desenvolvendo as cozinhas do futuro</Subtitle>
           </div>
         </TextWrapper>
         <ContactSection />
